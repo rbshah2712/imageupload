@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UploadserviceService} from '../uploadservice.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-image-display',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageDisplayComponent implements OnInit {
 
-  constructor() { }
+  photos: any | undefined;
+  constructor(private imageuploadService:UploadserviceService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.getphotos();
+
+  }
+
+  getphotos(){
+      this.imageuploadService.GetPhotos().subscribe(result => {
+       this.photos = result;
+       console.log(this.photos);
+      });
   }
 
 }
