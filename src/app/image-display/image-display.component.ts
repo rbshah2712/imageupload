@@ -20,7 +20,6 @@ export class ImageDisplayComponent implements OnInit {
   getphotos(){
       this.imageuploadService.GetPhotos().subscribe(result => {
        this.photos = result;
-       console.log(this.photos);
       });
   }
 

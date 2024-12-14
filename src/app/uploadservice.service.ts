@@ -12,6 +12,12 @@ GetPhotos(){
   return this.http.get('https://api.thecatapi.com/v1/images/search?limit=10');
 }
 
+PostPhotos(image: File){
+  const data = new FormData();
+  data.append("image", image);
+  return this.http.post('https://api.thecatapi.com/v1/images/upload',data);
+}
+
 
 
 }

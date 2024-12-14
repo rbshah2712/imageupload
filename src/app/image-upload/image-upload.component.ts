@@ -1,4 +1,11 @@
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 import { Component, OnInit } from '@angular/core';
+import { UploadserviceService } from '../uploadservice.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-image-upload',
@@ -7,9 +14,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImageUploadComponent implements OnInit {
 
-  constructor() { }
+  form!:FormGroup;
+  imagePreview:string | undefined;
+  selectedFile: ImageSnippet | undefined;
+  
+  constructor(private imageuploadService:UploadserviceService) { }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      image: new FormControl(null, {
+          validators: [Validators.required]
+      })
+  });
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+      this.imageuploadService.PostPhotos(this.selectedFile.file).subscribe(
+        (res) => {
+            console.log(res);
+        },
+        (err) => {
+            console.log(err);
+        })
+    });
+
+    reader.readAsDataURL(file);
+  }
+
+  onSavePost(){
+    this.imageuploadService.PostPhotos(this.form.value.image);
   }
 
 }

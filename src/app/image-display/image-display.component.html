@@ -1,4 +1,5 @@
 <h3>Image Display</h3>
+<a [routerLink]="['/add']">Add Image</a>
 <div *ngFor = "let p of photos">
 <img [src] = "p.url" width="p.width" height="p.height"/>
 </div>
