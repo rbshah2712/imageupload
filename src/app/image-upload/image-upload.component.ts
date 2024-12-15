@@ -17,6 +17,7 @@ export class ImageUploadComponent implements OnInit {
   form!:FormGroup;
   imagePreview:string | undefined;
   selectedFile: ImageSnippet | undefined;
+  progress: any;
   
   constructor(private imageuploadService:UploadserviceService) { }
 
@@ -29,6 +30,7 @@ export class ImageUploadComponent implements OnInit {
   }
 
   processFile(imageInput: any) {
+   console.log(imageInput);
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 

@@ -5,4 +5,8 @@
         accept="image/*"
         (change)="processFile(imageInput)">
     </div>
+    <div *ngIf="progress >= 0">
+        <p>upload progress:{{ progress }}</p>
+        <progress [value] = "progress" max="100"></progress>
+    </div>
     </form>
