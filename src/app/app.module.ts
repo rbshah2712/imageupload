@@ -7,12 +7,14 @@ import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ImageDisplayComponent } from './image-display/image-display.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImguploadComponent } from './imgupload/imgupload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageUploadComponent,
-    ImageDisplayComponent
+    ImageDisplayComponent,
+    ImguploadComponent
   ],
   imports: [
     BrowserModule,

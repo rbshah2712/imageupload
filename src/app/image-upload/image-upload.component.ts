@@ -23,14 +23,14 @@ export class ImageUploadComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      image: new FormControl(null, {
+      imageInput: new FormControl(null, {
           validators: [Validators.required]
       })
   });
   }
 
   processFile(imageInput: any) {
-   console.log(imageInput);
+   
     const file: File = imageInput.files[0];
     const reader = new FileReader();
 

@@ -1,0 +1,3 @@
+<form [formGroup]="form1" (submit)="onSavePost()">
+    <input #imagefile type="file" accept="image/*" (change)="uploadFile(imagefile)"/>
+</form>
